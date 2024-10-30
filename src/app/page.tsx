@@ -1,3 +1,5 @@
+
+
 import { ColorSchemesSwitcher } from "@/components/color-schemes-switcher";
 import {
   AppShell,
@@ -8,6 +10,12 @@ import {
   Title,
 } from "@mantine/core";
 import Image from "next/image";
+
+import type { Metadata } from 'next'
+ 
+export const metadata: Metadata = {
+  title: 'Home page',
+}
 
 export default function Home() {
   return (
