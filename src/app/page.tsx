@@ -1,5 +1,3 @@
-
-
 import { ColorSchemesSwitcher } from "@/components/color-schemes-switcher";
 import {
   AppShell,
@@ -10,8 +8,10 @@ import {
   Title,
 } from "@mantine/core";
 import Image from "next/image";
+// import { Scene } from "@/components/scene";
 
 import type { Metadata } from 'next'
+import Gallery from "@/components/gallery";
  
 export const metadata: Metadata = {
   title: 'Home page',
@@ -66,6 +66,9 @@ export default function Home() {
 
         <div className="flex justify-center mt-10">
           <ColorSchemesSwitcher />
+        </div>
+        <div className="mt-10">
+        <Gallery />
         </div>
       </AppShellMain>
     </AppShell>

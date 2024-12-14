@@ -7,3 +7,7 @@
 
 /* import mantine */
 @import "@mantine/core/styles.layer.css";
+
+canvas {
+    touch-action: none;
+  }
