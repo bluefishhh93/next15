@@ -31,7 +31,7 @@ export function GalleryRoom() {
     },
     {
       position: [0, roomHeight, 0] as [number, number, number],
-      color: "#e6e6fa",
+      color: "#f0f0f0",
       artworks: [
         {
           id: 3,
