@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 import { ArtRoom } from './art-room'
 import { SpiralStair } from './spiral-stair'
 import { SecondFloorRoom } from './second-floor-room'
+import GlassWindow from './glass-window'
 
 export function GalleryRoom() {
   // Room dimensions
@@ -61,6 +62,8 @@ export function GalleryRoom() {
           models={[
             <SpiralStair key="stair" position={[roomWidth / 4, 0, roomDepth / 4]} />,
             // Add more models here
+            <GlassWindow key="window_1" position={[0.3, 0, -15]} />,
+            <GlassWindow key="window_2" position={[10, 0, -15  ]} />
           ]}
         />
         <SecondFloorRoom 

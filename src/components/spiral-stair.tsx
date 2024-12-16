@@ -18,11 +18,10 @@ export function SpiralStair({ position = [ 2  , 0, 2] }) {
   }, [scene])
 
   return (
-   
      <primitive 
       object={scene} 
       position={position}
-      scale={310} 
+      scale={310}
     />
   )
 }

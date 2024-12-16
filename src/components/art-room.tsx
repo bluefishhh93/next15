@@ -44,7 +44,7 @@ export function ArtRoom({ room, roomWidth, roomHeight, roomDepth, models }: ArtR
         <Wall
           position={[0, 5, -roomDepth / 2]}
           dimensions={{ width: roomWidth, height: roomHeight, depth: 0.2 }}
-          material={{ color: room.color, texture: wallTexture , roughness: 1, metalness: 0.1 }}
+          material={{ color: room.color, texture: wallTexture, roughness: 1, metalness: 0.1 }}
 
         />
 
@@ -61,8 +61,9 @@ export function ArtRoom({ room, roomWidth, roomHeight, roomDepth, models }: ArtR
           roomHeight={roomHeight}
           roomDepth={roomDepth}
           color={room.color} />
-      </group>
 
+    
+      </group>
 
       {/* Artworks */}
       {room.artworks.map((artwork) => (
