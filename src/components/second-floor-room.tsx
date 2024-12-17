@@ -1,16 +1,17 @@
 import React from 'react'
 import {ArtworkMesh} from './art-work-mesh'
+import { Vec3 } from '@/types'
 
 
 interface Artwork {
     id: number
     url: string
-    position: [number, number, number]
-    rotation: [number, number, number]
+    position: Vec3
+    rotation: Vec3
   }
   
   interface Room {
-    position: [number, number, number]
+    position: Vec3
     color: string
     artworks: Artwork[]
   }

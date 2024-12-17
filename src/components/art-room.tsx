@@ -4,19 +4,31 @@ import { useLoader } from '@react-three/fiber'
 import { TextureLoader } from 'three'
 import { DoorWall } from './door-wall'
 import { Wall } from './wall'
+import { Vec3 } from '@/types'
 
 
 interface Artwork {
   id: number
   url: string
-  position: [number, number, number]
-  rotation: [number, number, number]
+  position: Vec3
+  rotation: Vec3
 }
 
 interface Room {
-  position: [number, number, number]
+  position: Vec3
   color: string
   artworks: Artwork[]
+  floor: {
+    texture?: string
+    color?: string
+    position?: Vec3,
+    roughness?: number
+    args?: {
+      width: number
+      height: number
+      depth: number
+    }
+  }
 }
 
 interface ArtRoomProps {
@@ -25,6 +37,7 @@ interface ArtRoomProps {
   roomHeight: number
   roomDepth: number
   models?: React.ReactNode[]
+
 }
 
 export function ArtRoom({ room, roomWidth, roomHeight, roomDepth, models }: ArtRoomProps) {
@@ -33,9 +46,21 @@ export function ArtRoom({ room, roomWidth, roomHeight, roomDepth, models }: ArtR
   return (
     <group position={room.position}>
       {/* Floor */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.5, 0]} receiveShadow>
-        <boxGeometry args={[roomWidth, roomWidth]} />
-        <meshStandardMaterial map={woodFloorTexture} color={room.color} roughness={0.8} />
+      <mesh
+        rotation={[-Math.PI / 2, 0, 0]}
+        position={room.floor.position || [0, -0.5, 0]}
+        receiveShadow
+      >
+        <boxGeometry args={room.floor.args ?
+          [room.floor.args.height,
+          room.floor.args.width,
+          room.floor.args.depth]
+          : [roomWidth, roomWidth]} />
+        <meshStandardMaterial
+          map={woodFloorTexture}
+          color={room.floor.color || room.color}
+          roughness={room.floor.roughness ?? 0.8}
+        />
       </mesh>
 
       {/* Walls */}
@@ -62,7 +87,7 @@ export function ArtRoom({ room, roomWidth, roomHeight, roomDepth, models }: ArtR
           roomDepth={roomDepth}
           color={room.color} />
 
-    
+
       </group>
 
       {/* Artworks */}
