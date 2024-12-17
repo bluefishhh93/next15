@@ -1,15 +1,21 @@
 // src/components/spiral-stair.tsx
 'use client'
+import { Vec3 } from '@/types'
 import { useGLTF } from '@react-three/drei'
 import { useEffect } from 'react'
 import { Mesh } from 'three'
 
+interface DCStairProps {
+    position?: Vec3
+    scale?: Vec3
+    rotation?: Vec3
+}
   // SpiralStair
   export function DCStair({ 
-    position = [2, 0, 2],
-    scale = 1,
-    rotation = [0, 0, 0]
-  }) {
+    position ,
+    scale,
+    rotation
+  } : DCStairProps) {
     const { scene } = useGLTF('/models/dc_stair/dc_stair.glb')
   
     useEffect(() => {

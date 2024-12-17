@@ -9,9 +9,9 @@ interface GlassWindowProps {
 }
 // GlassWindow
 export default function GlassWindow({
-  position = [0, 0, 0],
-  scale = [5, 4.9, 3.4],
-  rotation = [0, Math.PI / 2, 0]
+  position,
+  scale,
+  rotation
 }: GlassWindowProps) {
   const { scene } = useGLTF('/models/glass_window/glass_window.glb')
   const clonedScene = useMemo(() => scene.clone(), [scene])

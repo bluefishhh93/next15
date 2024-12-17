@@ -9,6 +9,38 @@ interface Artwork {
   rotation: Vec3
 }
 
+function FrameMesh({ width, height }: { width: number; height: number }) {
+  // Load texture cho khung tranh
+  const frameTexture = useTexture('/models/textures/floor.jpg') // Đường dẫn texture gỗ
+
+  const frameThickness = 0.1 // Độ dày của khung
+
+  return (
+    <group>
+      {/* Khung trên */}
+      <mesh position={[0, height / 2 + frameThickness / 2, 0]}>
+        <boxGeometry args={[width + frameThickness * 2, frameThickness, 0.1]} />
+        <meshStandardMaterial map={frameTexture} />
+      </mesh>
+      {/* Khung dưới */}
+      <mesh position={[0, -height / 2 - frameThickness / 2, 0]}>
+        <boxGeometry args={[width + frameThickness * 2, frameThickness, 0.1]} />
+        <meshStandardMaterial map={frameTexture} />
+      </mesh>
+      {/* Khung trái */}
+      <mesh position={[-width / 2 - frameThickness / 2, 0, 0]}>
+        <boxGeometry args={[frameThickness, height, 0.1]} />
+        <meshStandardMaterial map={frameTexture} />
+      </mesh>
+      {/* Khung phải */}
+      <mesh position={[width / 2 + frameThickness / 2, 0, 0]}>
+        <boxGeometry args={[frameThickness, height, 0.1]} />
+        <meshStandardMaterial map={frameTexture} />
+      </mesh>
+    </group>
+  )
+}
+
 export function ArtworkMesh({ artwork }: { artwork: Artwork }) {
   // Load texture
   const texture = useTexture(artwork.url)
@@ -25,16 +57,15 @@ export function ArtworkMesh({ artwork }: { artwork: Artwork }) {
   }, [texture])
 
   return (
-    <mesh 
-      position={artwork.position} 
-      rotation={artwork.rotation}
-    >
-      <planeGeometry args={[scaledWidth, scaledHeight]} />
-      <meshStandardMaterial 
-        map={texture} 
-        roughness={0.4}
-        metalness={0.1}
-      />
-    </mesh>
+    <group position={artwork.position} rotation={artwork.rotation}>
+      {/* Tranh */}
+      <mesh>
+        <planeGeometry args={[scaledWidth, scaledHeight]} />
+        <meshStandardMaterial map={texture} roughness={0.4} metalness={0.1} />
+      </mesh>
+
+      {/* Khung */}
+      <FrameMesh width={scaledWidth} height={scaledHeight} />
+    </group>
   )
 }

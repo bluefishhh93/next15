@@ -15,9 +15,9 @@ export function DoorWall({ roomWidth, roomHeight, roomDepth, color, texture }: D
         <group>
           {/* Bottom Right Section */}
           <Wall
-            position={[roomWidth / 2, 3.3, 6.7]}
+            position={[roomWidth / 2, 3.3, 6.7 + 8]}
             rotation={[0, -Math.PI / 2, 0]}
-            dimensions={{ width: roomDepth / 3, height: (roomHeight * 2) / 3 }}
+            dimensions={{ width: roomDepth / 3 + 16, height: (roomHeight * 2) / 3 }}
             material={{ color, texture }}
           />
     
@@ -31,11 +31,10 @@ export function DoorWall({ roomWidth, roomHeight, roomDepth, color, texture }: D
     
           {/* Middle Right Section */}
           <Wall
-            position={[roomWidth / 2, 8.3, 0]}
+            position={[roomWidth / 2, 8.3, 0 + 8]}
             rotation={[0, -Math.PI / 2, 0]}
-            dimensions={{ width: roomDepth, height: roomHeight / 3 }}
+            dimensions={{ width: roomDepth + 16, height: roomHeight / 3 }}
             material={{ color, texture }}
-            options={{ castShadow: true }}
           />
         </group>
       );
