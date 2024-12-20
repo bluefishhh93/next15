@@ -17,6 +17,14 @@ export default function GlassWindow2({
   const { scene } = useGLTF('/models/glass_window_2/glass_window_2.glb')
   const clonedScene = useMemo(() => scene.clone(), [scene])
 
+  // useEffect(() => {
+  //   clonedScene.traverse((child) => {
+  //     if (child instanceof Mesh) {
+  //       child.castShadow = true
+  //       // child.receiveShadow = true
+  //     }
+  //   })
+  // }, [clonedScene])
   return (
     <primitive
       object={clonedScene}

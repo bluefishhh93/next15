@@ -11,7 +11,7 @@ import Image from "next/image";
 // import { Scene } from "@/components/scene";
 
 import type { Metadata } from 'next'
-import Gallery from "@/components/gallery";
+import Gallery from "@/components/gallery-renderer";
  
 export const metadata: Metadata = {
   title: 'Home page',

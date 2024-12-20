@@ -54,11 +54,11 @@ interface ArtRoomProps {
 export function ArtRoom({ room, roomWidth, roomHeight, roomDepth, models }: ArtRoomProps) {
   const defaultFloorTexture = useLoader(TextureLoader, 'models/textures/floor.jpg');
   const defaultWallTexture = useLoader(TextureLoader, 'models/textures/white-wall.jpg');
-  const floorRotation = [-Math.PI / 2, 0, 0] as Vec3;
-  const ceilingRotation = [Math.PI / 2, 0, 0] as Vec3;
+  const floorRotation: [number, number, number] = [-Math.PI / 2, 0, 0];
+  const ceilingRotation: [number, number, number] = [Math.PI / 2, 0, 0];
   const floorPosition = room.floor.position || [0, -0.5, 0 + 8];
-  const defaultFloorGeometryArgs = [roomWidth, roomWidth + 16] as [number, number];
-  const defaultCeilingGeometryArgs = [roomWidth, roomWidth + 16] as [number, number];
+  const defaultFloorGeometryArgs : [number, number] = [roomWidth, roomWidth + 16];
+  const defaultCeilingGeometryArgs: [number, number] = [roomWidth, roomWidth + 16];
 
   return (
     <group position={room.position}>
@@ -66,8 +66,8 @@ export function ArtRoom({ room, roomWidth, roomHeight, roomDepth, models }: ArtR
       <mesh
         rotation={floorRotation}
         position={floorPosition}
-        castShadow
         receiveShadow
+        castShadow
       >
         <boxGeometry args={room.floor.args ?
           [

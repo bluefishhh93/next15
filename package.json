@@ -15,14 +15,19 @@
     "@mantine/hooks": "^7.13.4",
     "@react-three/drei": "^9.115.0",
     "@react-three/fiber": "^9.0.0-alpha.8",
+    "@react-three/offscreen": "^0.0.8",
+    "@serwist/next": "^9.0.11",
+    "@types/prop-types": "^15.7.14",
     "@types/three": "^0.169.0",
+    "install": "^0.13.0",
     "leva": "^0.9.35",
     "next": "^15.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-error-boundary": "^4.1.2",
     "tailwind-preset-mantine": "^1.2.1",
-    "three": "^0.169.0"
+    "three": "^0.169.0",
+    "worker-loader": "^3.0.8"
   },
   "devDependencies": {
     "@types/node": "^22.7.9",

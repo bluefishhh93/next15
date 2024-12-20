@@ -2,7 +2,7 @@
 'use client'
 import { Vec3 } from '@/types'
 import { useGLTF } from '@react-three/drei'
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { Mesh } from 'three'
 
 interface DCStairProps {
@@ -17,19 +17,20 @@ interface DCStairProps {
     rotation
   } : DCStairProps) {
     const { scene } = useGLTF('/models/dc_stair/dc_stair.glb')
+    const clonedScene = useMemo(() => scene.clone(), [scene])
   
     useEffect(() => {
-      scene.traverse((child) => {
+      clonedScene.traverse((child) => {
         if (child instanceof Mesh) {
           child.castShadow = true
           child.receiveShadow = true
         }
       })
-    }, [scene])
+    }, [clonedScene])
   
     return (
       <primitive 
-        object={scene} 
+        object={clonedScene} 
         position={position}
         // scale={[2,3,3]}
         scale={scale}
